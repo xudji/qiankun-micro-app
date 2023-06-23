@@ -1,33 +1,37 @@
-import Vue from 'vue';
-import { registerMicroApps, start } from 'qiankun';
-import App from './App.vue';
-import router from './router';
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+
+import { registerMicroApps, start } from "qiankun";
+
 
 Vue.config.productionTip = false;
-registerMicroApps([
-  {
-    name: 'reactApp',
-    entry: '//localhost:3000',
-    container: '#container',
-    activeRule: '/app-react',
-  },
-  {
-    name: 'vueApp',
-    entry: '//localhost:8080',
-    container: '#container',
-    activeRule: '/app-vue',
-  },
-  {
-    name: 'angularApp',
-    entry: '//localhost:4200',
-    container: '#container',
-    activeRule: '/app-angular',
-  },
-]);
-// 启动 qiankun
-start();
 
 new Vue({
   router,
   render: (h) => h(App),
-}).$mount('#app');
+}).$mount("#app");
+
+// 注册微应用
+registerMicroApps([
+  // {
+  //   name: "reactApp", // 微应用的名称
+  //   entry: "//localhost:3000", // 微应用访问地址
+  //   container: "#sub-container", // 微应用渲染到哪个容器内部
+  //   activeRule: "/react", // 微应用激活的路由地址
+  // },
+  {
+    name: "vue2App",
+    entry: "//localhost:3001",
+    container: "#sub-container",
+    activeRule: "/vue2",
+  },
+  // {
+  //   name: "vue3App",
+  //   entry: "//localhost:3002",
+  //   container: "#sub-container",
+  //   activeRule: "/vue3",
+  // },
+]);
+
+start();
