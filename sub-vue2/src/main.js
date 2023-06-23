@@ -29,7 +29,10 @@ export async function mount(props) {
 }
 
 export async function unmount() {
-  render(props)   
+  render('Vue2微应用开始卸载了')
+  vm.$destroy()
+  vm.$el.innerHTML = "";
+  vm = null   
 }
 
 new Vue({
